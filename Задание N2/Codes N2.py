@@ -1,0 +1,23 @@
+# def f(x, y, z, w):
+#     return (not(x <= y) or (z == w) or z)
+#
+# from itertools import *
+#
+# for a1, a2, a3, a4, a5, a6, a7 in product([0,1], repeat = 7):
+#     table = [(0,0, a1, a2), (a3, a4, 1, a5), (a6, 1, 0, a7)]
+#     if len(table) == len(set(table)):
+#         for p in permutations('xyzw'):
+#             if [f(**dict(zip(p, r))) for r in table] == [0,0,0]:
+#                 print(*p, sep = '')
+from itertools import product, permutations
+
+
+def f(a,b,c,d):
+    return (c and (a or d) and (d <= b))
+
+for a1, a2, a3, a4,a5, a6 in product([0,1], repeat=6):
+    table = [(a1, a2, a3, 0), (a4, 1, 0, a5), (0, a6, 1, 0)]
+    if len(table) == len(set(table)):
+        for p in permutations('abcd'):
+            if [f(**dict(zip(p, r))) for r in table] == [1,1,1]:
+                print(*p, sep = '')
