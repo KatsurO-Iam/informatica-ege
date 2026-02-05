@@ -1,14 +1,13 @@
 with open('24') as f:
-    s = f.read()
+    sp = f.readline()
+maxx = 0
+k = ''
+sp = sp.split('2')
+for i in range(len(sp) - 301):
+    s = '2'.join(sp[i:i+301])
+    if s.count('DOG') == 3:
+        inx = s.rfind('DOG')
+        maxx = max(maxx, len(s[:inx]))
 
-parts = s.split('CAT')
-max_len = 0
-
-for i in range(len(parts) - 4):
-    w = 'CAT'.join(parts[i: i + 5])
-    cur = w[:w.rfind('CAT') + 3]
-    if cur.count('1') == 700:
-        max_len = max(max_len, len(cur))
-
-print(max_len)
-#Ольга Анатольевна почему ничего не выводит?(
+print(maxx + 3)
+#11487

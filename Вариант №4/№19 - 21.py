@@ -1,7 +1,7 @@
 from math import ceil
 
 def f(a,h,ph):
-    if a <= 71:
+    if a <= 76:
         return h%2 == ph % 2
     if h == ph:
         return 0
@@ -9,16 +9,16 @@ def f(a,h,ph):
     return any(comb) if (h + 1)%2 == ph % 2 else all(comb)
 
 
-print('--------------------19') # 288
-for x in range(72, 500):
+print('--------------------19') # 308
+for x in range(77, 500):
     if not f(x,0, 1) and f(x, 0, 2):
         print(x)
-print('--------------------20') # 291 292
-for x in range(72, 500):
+print('--------------------20') # 308 312
+for x in range(77, 500):
     if not f(x, 0, 1) and f(x, 0, 3):
         print(x)
-print('--------------------21') #296
-for x in range(72, 500):
+print('--------------------21') # 316
+for x in range(77, 500):
     if not f(x, 0, 2) and f(x, 0, 4):
         print(x)
 print('----------------------')

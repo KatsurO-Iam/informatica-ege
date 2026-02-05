@@ -34,28 +34,26 @@ while pointsB:
     klastsB.append([pointsB.pop()])
     for p1 in klastsB[-1]:
         for p2 in pointsB[:]:
-            if dist(p1, p2) < 1:
+            if dist(p1, p2) < 0.2:
                 klastsB[-1].append(p2)
                 pointsB.remove(p2)
 print(len(klastsB), [len(x) for x in klastsB])
 #-------------------------------------------------------------------#
 centrsA = [f(klast) for klast in klastsA if len(klast) > 10]
-rastX = abs(centrsA[0][0] - centrsA[1][0])*10_000
-rastY = abs(centrsA[0][1] - centrsA[1][1])*10_000
+max_absc = max(centrsA[0][0], centrsA[1][0])*10_000
+max_ord = max(centrsA[0][1], centrsA[1][1])*10_000
 #-------------------------------------------------------------------#
 centrsB = [f(klast) for klast in klastsB if len(klast) > 10]
-rast_centersB = []
-for cents1 in range(len(centrsB) - 1):
-        rast_centersB.append(dist(centrsB[cents1], centrsB[cents1 + 1]))
+print(centrsB)
+arif_absc = ((centrsB[0][0]+centrsB[1][0]+centrsB[2][0])/3)*10_000
+arif_ord = ((centrsB[0][1] + centrsB[1][1]+centrsB[2][1])/3)*10_000
 
-minB = min(rast_centersB)*10_000
-maxB = max(rast_centersB)*10_000
 #-------------------------------------------------------------------#
 #-------------------------------------------------------------------#
-print(int(rastX), int(rastY))
-print(int(minB), int(maxB))
+print(int(max_absc), int(max_ord))
+print(int(abs(arif_absc)), int(arif_ord))
 #-------------------------------------------------------------------#
-# 23684 65128
-# 72353 130974
+# 13330 110130
+# 9612 48927
 
 
