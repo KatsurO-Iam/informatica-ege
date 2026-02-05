@@ -1,8 +1,5 @@
 from math import dist
 
-from django.template.defaultfilters import center
-
-
 def f(klast):
     centroid, summ1 = None, float('inf')
     for star in range(len(klast)):
@@ -15,23 +12,7 @@ def f(klast):
             centroid = klast[star]
             summ1 = summ
     return centroid
-
-def rast(kl, cent):
-    maxx = -float('inf')
-    for p in kl:
-        if dist(p, cent) > maxx:
-            maxx = dist(p, cent)
-    return maxx
-
-def sum_rast(kl, cent):
-    summ = 0
-    for i in range(len(kl)):
-        summ += dist(kl[i], cent)
-    arif = summ / (len(kl) - 1)
-    return arif
-
 #-------------------------------------------------------------------#
-
 #-------------------------------------------------------------------#
 pointsA = [[float(j) for j in i.replace(',', '.').split()] for i in open('27A.txt')]
 pointsB = [[float(j) for j in i.replace(',', '.').split()] for i in open('27B.txt')]
@@ -53,29 +34,28 @@ while pointsB:
     klastsB.append([pointsB.pop()])
     for p1 in klastsB[-1]:
         for p2 in pointsB[:]:
-            if dist(p1, p2) < 0.25:
+            if dist(p1, p2) < 1:
                 klastsB[-1].append(p2)
                 pointsB.remove(p2)
 print(len(klastsB), [len(x) for x in klastsB])
 #-------------------------------------------------------------------#
-
-#-------------------------------------------------------------------#
 centrsA = [f(klast) for klast in klastsA if len(klast) > 10]
-print(centrsA)
-distA = dist(centrsA[0], centrsA[1])
-rast1 = rast(klastsA[0],centrsA[0])
-rast2 = rast(klastsA[1],centrsA[1])
+rastX = abs(centrsA[0][0] - centrsA[1][0])*10_000
+rastY = abs(centrsA[0][1] - centrsA[1][1])*10_000
 #-------------------------------------------------------------------#
 centrsB = [f(klast) for klast in klastsB if len(klast) > 10]
-print(centrsB)
-arifB_min = sum_rast(klastsB[2], centrsB[2])
-arifB_max = sum_rast(klastsB[1], centrsB[1])
-#-------------------------------------------------------------------#
+rast_centersB = []
+for cents1 in range(len(centrsB) - 1):
+        rast_centersB.append(dist(centrsB[cents1], centrsB[cents1 + 1]))
 
+minB = min(rast_centersB)*10_000
+maxB = max(rast_centersB)*10_000
 #-------------------------------------------------------------------#
-print(int(distA * 10_000), int(max(rast1, rast2) * 10_000))
-print(int(arifB_min * 10_000), int(arifB_max * 10_000))
 #-------------------------------------------------------------------#
-# 116621 13451
-# 646 614
+print(int(rastX), int(rastY))
+print(int(minB), int(maxB))
+#-------------------------------------------------------------------#
+# 23684 65128
+# 72353 130974
+
 
