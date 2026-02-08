@@ -1,5 +1,4 @@
-
-# from fnmatch import *
+from fnmatch import *
 #
 # def is_prime(number):
 #     for i in range(2, int(number ** 0.5) + 1):
@@ -76,18 +75,18 @@
 #     return True
 #
 #
-def f(x): # функция, которая возвращает список делителей числа
-    d = set()
-    k = 0
-    for i in range(2, int(x**0.5)+1):
-        if x % i == 0:
-            d.add(i)
-            d.add(x//i)
-    if len(d) > 0:
-        return sorted(d)
-        #return k
-print(f(8))
-#
+# def f(x): # функция, которая возвращает список делителей числа
+#     d = set()
+#     k = 0
+#     for i in range(2, int(x**0.5)+1):
+#         if x % i == 0:
+#             d.add(i)
+#             d.add(x//i)
+#     if len(d) > 0:
+#         return sorted(d)
+#         #return k
+# print(f(8))
+# #
 #
 # for i in range(228225, 531136):
 #     k = 3
@@ -329,3 +328,81 @@ from time import *
 #         cnt +=1
 #     if cnt == 5:
 #         break
+
+
+# def is_prime(n):
+#     if n < 2: return False
+#     for i in range(2, int(n ** 0.5) + 1):
+#         if n % i == 0: return False
+#     return True
+#
+#
+# def f(n):
+#     s = set()
+#     for i in range(1, int(n ** 0.5)):
+#         if n % i == 0:
+#             s.add(i)
+#             s.add(n // i)
+#     return s
+#
+# for i in range(7521, 10**9, 7521):
+#     if fnmatch(str(i), '?13*79*9') and i % 7521 == 0:
+#         print( i ,sum([int(x) for x in str(i)]))
+
+
+def is_prime(n):
+    if n < 2: return False
+    for i in range(2, int(n ** 0.5) + 1):
+        if n % i == 0: return False
+    return True
+
+
+# Генерируем простые числа до предела для квадратов (~316227)
+primes = []
+limit_p = int((10 ** 11) ** 0.5) + 100
+# Используем решето или простой перебор, так как число небольшое
+# Для простоты здесь обычный перебор:
+for i in range(2, limit_p):
+    if is_prime(i):
+        primes.append(i)
+
+found_numbers = []
+
+# Перебираем возможные степени (показатель степени + 1 = нечетное простое число)
+# Возможные показатели степени: 2, 4, 6, 10, 12, 16...
+# Но на практике выше 6-й степени мы вряд ли что-то найдем с маской "2025" внутри лимита
+powers = [2, 4, 6, 10, 12, 16]
+
+for p in primes:
+    for exponent in powers:
+        # Проверяем, является ли (exponent + 1) простым числом?
+        # 2+1=3 (прост), 4+1=5 (прост), 6+1=7 (прост),
+        # 10+1=11 (прост), 12+1=13 (прост), 16+1=17 (прост).
+        # Все выбранные подходят.
+
+        num = p ** exponent
+
+        if num >= 10 ** 11:
+            break  # Если степень превысила лимит, следующая степень тоже превысит
+
+        # Проверка маски *2025* (содержит "2025")
+        if "2025" in str(num):
+            # Проверка последней цифры > 1
+            if num % 10 > 1:
+                # Сохраняем пару (число, наибольший_делитель)
+                # Наибольший делитель для p^k равен p^(k-1)
+                max_div = p ** (exponent - 1)
+                found_numbers.append((num, max_div))
+
+# Сортируем по убыванию самого числа
+found_numbers.sort(key=lambda x: x[0], reverse=True)
+
+# Выводим 3-е по убыванию
+if len(found_numbers) >= 3:
+    target = found_numbers[2]
+    print(f"1-е место: {found_numbers[0][0]}")
+    print(f"2-е место: {found_numbers[1][0]}")
+    print(f"3-е место (Ответ): {target[0]}")
+    print(f"Наибольший делитель (в бланк): {target[1]}")
+else:
+    print("Найдено меньше 3 чисел")
