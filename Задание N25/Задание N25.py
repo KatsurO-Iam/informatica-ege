@@ -1,3 +1,16 @@
+def f(n):
+    res = []
+    d = 2
+    while d <= int(n**0.5) + 1:
+        if n % d == 0:
+            n //= d
+            res.append(d)
+        d += 1
+    if n > 1:
+        res.append(n)
+    return res
+
+print(f(10))
 
 # from fnmatch import *
 #
@@ -76,18 +89,16 @@
 #     return True
 #
 #
-def f(x): # функция, которая возвращает список делителей числа
-    d = set()
-    k = 0
-    for i in range(2, int(x**0.5)+1):
-        if x % i == 0:
-            d.add(i)
-            d.add(x//i)
-    if len(d) > 0:
-        return sorted(d)
-        #return k
-print(f(8))
-#
+# def f(x): # функция, которая возвращает список делителей числа
+#     d = set()
+#     k = 0
+#     for i in range(2, int(x**0.5)+1):
+#         if x % i == 0:
+#             d.add(i)
+#             d.add(x//i)
+#     return d
+# print(f(100))
+# #
 #
 # for i in range(228225, 531136):
 #     k = 3

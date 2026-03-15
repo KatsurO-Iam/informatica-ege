@@ -1,5 +1,12 @@
-sp = '12345'
-print(sorted(sp[1:]))
+from itertools import *
+
+# ox = [i//4 for i in range(68*4, 120*4)]
+ox = [*range(68, 120)]
+print(ox)
+
+print(*combinations([1,2,3,4,5],3))
+
+
 # def f(x, y, z, w):
 #     return ((y == w) or (z <= w)) and (y == (x or z))
 #
