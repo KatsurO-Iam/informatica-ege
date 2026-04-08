@@ -1,11 +1,12 @@
-from itertools import *
-
-# ox = [i//4 for i in range(68*4, 120*4)]
-ox = [*range(68, 120)]
-print(ox)
-
-print(*combinations([1,2,3,4,5],3))
-
+n = 11
+r = bin(n)[2:]
+if n % 2 == 0:
+    r = r.replace('0', '1')
+if n % 2 != 0:
+    inx = r.find('1')
+    print(r[inx+1:])
+    r = '1' + r[inx+1:].replace('1', '00')
+print(r)
 
 # def f(x, y, z, w):
 #     return ((y == w) or (z <= w)) and (y == (x or z))
