@@ -1,12 +1,19 @@
-n = 11
+n = 4
 r = bin(n)[2:]
-if n % 2 == 0:
-    r = r.replace('0', '1')
-if n % 2 != 0:
-    inx = r.find('1')
-    print(r[inx+1:])
-    r = '1' + r[inx+1:].replace('1', '00')
+if r.count('1') % 2 == 0:
+    r = '1' + r[:-2] + '01'
+elif r.count('1') % 2 != 0:
+    r = '1' + r[2:] + '10'
 print(r)
+# n = 11
+# r = bin(n)[2:]
+# if n % 2 == 0:
+#     r = r.replace('0', '1')
+# if n % 2 != 0:
+#     inx = r.find('1')
+#     print(r[inx+1:])
+#     r = '1' + r[inx+1:].replace('1', '00')
+# print(r)
 
 # def f(x, y, z, w):
 #     return ((y == w) or (z <= w)) and (y == (x or z))
