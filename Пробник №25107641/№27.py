@@ -58,7 +58,7 @@ print(min_DB, sr_DB)
 
 
 
-# klastsA = [[float(j) for j in i.replace(',', '.').split()] for i in open('27A.txt')]
+# klastsA = [[float(j) for j in i.replace(',', '.').split()] for i in open('27A')]
 #
 # centr1 = diametr([star for star in klastsA if star[0] < 0 and star[1] > 0])
 # centr2 = diametr([star for star in klastsA if star[0] > 2 and star[1] > 2])
