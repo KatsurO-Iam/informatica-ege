@@ -1,24 +1,24 @@
-def f(n):
-    res = []
-    d = 2
-    while d <= int(n**0.5) + 1:
-        if n % d == 0:
-            n //= d
-            res.append(d)
-        d += 1
-    if n > 1:
-        res.append(n)
-    return res
-
-print(f(10))
+# def f(n):
+#     res = []
+#     d = 2
+#     while d <= int(n**0.5) + 1:
+#         if n % d == 0:
+#             n //= d
+#             res.append(d)
+#         d += 1
+#     if n > 1:
+#         res.append(n)
+#     return res
+#
+# print(f(10))
 
 # from fnmatch import *
 #
-# def is_prime(number):
-#     for i in range(2, int(number ** 0.5) + 1):
-#         if number % i == 0:
-#             return False
-#     return True
+def isp(number):
+    for i in range(2, int(number ** 0.5) + 1):
+        if number % i == 0:
+            return False
+    return True
 #
 #
 # def f(n): #81
