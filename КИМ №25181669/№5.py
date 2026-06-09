@@ -1,6 +1,3 @@
-from sphinx.search import pt
-
-
 def f(n):
     k_0 = 0
     k_1 = 0
