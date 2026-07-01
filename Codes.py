@@ -1,4 +1,49 @@
+s = '1234567890'
+print(s[s.find('7'):])
 
+# from re import *
+# s = open('24_31160.txt').readline()
+#
+# def f(s):
+#     alph = {
+#         "M":1000,
+#         "CM":900,
+#         "D": 500,
+#         "CD":400,
+#         "C": 100,
+#         "XC":90,
+#         "L":50,
+#         "XL":40,
+#         "X":10,
+#         "IX":9,
+#         "V":5,
+#         "IV":4,
+#         "I":1
+#     }
+#
+#     i = 0
+#     ans = 0
+#     while i < len(s):
+#         if (i < len(s) - 1) and (s[i] + s[i + 1]) in alph:
+#             ans += alph[s[i] + s[i + 1]]
+#             i +=2
+#         else:
+#             ans += alph[s[i]]
+#             i +=1
+#     return ans
+#
+# num = compile('(?=[MDCLXVI])(M{0,3}(CM|CD|D?C{0,3})(XC|XL|L?X{0,3})(IX|IV|V?I{0,3}))')
+# m = 0
+# ans = ''
+# for x in num.finditer(s):
+#     t = x.group()
+#     if len(t) > m:
+#         m = len(t)
+#         ans = t
+#     elif len(t) == m:
+#         if f(ans) > f(t):
+#             ans = t
+# print(f(ans))
 # n = 11
 # r = bin(n)[2:]
 # if n % 2 == 0:

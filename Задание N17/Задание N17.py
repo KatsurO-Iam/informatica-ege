@@ -323,25 +323,25 @@
 #
 # print(cnt, max(maxx))
 
-# sp = [int(x) for x in open('17.txt')]
-# #
-# # maxx = max([m for m in sp if m % 1000 == 321])
-# # cnt = 0
-# # mmax = []
-# # for i in range(len(sp) - 2):
-# #     p1 = len(str(sp[i])) == 5
-# #     p2 = len(str(sp[i + 1])) == 5
-# #     p3 = len(str(sp[i + 2])) == 5
-# #
-# #     q1 = sp[i] % 5 == 0
-# #     q2 = sp[i + 1] % 5 == 0
-# #     q3 = sp[i + 2] % 5 == 0
-# #     summ = sp[i] + sp[i+1] + sp[i + 2]
-# #     if (p1 + p2 + p3 == 2) and (q1 + q2 + q3 >= 1) and summ > maxx:
-# #         cnt +=1
-# #         mmax.append(summ)
-# #
-# # print(cnt, max(mmax))
+sp = [int(x) for x in open('17.txt')]
+
+maxx = max([m for m in sp if m % 1000 == 321])
+cnt = 0
+mmax = []
+for i in range(len(sp) - 2):
+    p1 = len(str(sp[i])) == 5
+    p2 = len(str(sp[i + 1])) == 5
+    p3 = len(str(sp[i + 2])) == 5
+
+    q1 = sp[i] % 5 == 0
+    q2 = sp[i + 1] % 5 == 0
+    q3 = sp[i + 2] % 5 == 0
+    summ = sp[i] + sp[i+1] + sp[i + 2]
+    if (p1 + p2 + p3 == 2) and (q1 + q2 + q3 >= 1) and summ > maxx:
+        cnt +=1
+        mmax.append(summ)
+
+print(cnt, max(mmax))
 
 # sp = [int(x) for x in open('17MCKO.txt')]
 # sp1 = sorted(set(sp), reverse=True)
