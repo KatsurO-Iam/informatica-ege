@@ -27,8 +27,9 @@ def f(s):
             i +=1
     return ans
 
+s = open('24_31160.txt').readline()
+
 def main():
-    s = open('24_31160.txt').readline()
     reg = compile('(?=[MDCLXVI])(M{0,3}(CM|CD|D?C{0,3})(XC|XL|L?X{0,3})(IX|IV|V?I{0,3}))')
     ans = ''
     t = 0
@@ -41,12 +42,11 @@ def main():
             if f(ans) > f(k):
                 ans = k
     print(f(ans))
-
 main()
 
 #II вариант решения через Exele
 alph = dict()
-for x in open('secday'):
+for x in open('24_secday'):
     d,r = x.split()
     alph[int(d)] = r
 m = 0
