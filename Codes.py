@@ -1,5 +1,12 @@
-sp = [[22.1707588150025, 39.65891347675987], [23.329917580199655, 26.41328219493777], [21.38834573144159, 48.899310705252915]]
-print(sorted(sp))
+from math import *
+for x in range(1,1000000):
+    N = x
+    dl = 208
+    i = ceil(log2(N))
+    V = ceil(dl * i/8)
+    if V * 1918947 >= 634710 * 1024:
+        print(x)
+        break
 # def f(x, y, z, w):
 #     return ((y == w) or (z <= w)) and (y == (x or z))
 #
